@@ -10,6 +10,9 @@
 </head>
 
 <body>
+<?php 
+    include "includes/header.html"
+    ?>
     <div class="container">
         <h2 class="mb-5">Welcome, alex!</h2>
         <h4>Your profile:</h4>

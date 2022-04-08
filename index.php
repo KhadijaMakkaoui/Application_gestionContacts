@@ -11,6 +11,9 @@
 </head>
 
 <body>
+<?php 
+    include "includes/header.html"
+    ?>
     <div class=" bg-light vh-100 row flex-column justify-content-center align-content-center">
         <h1>Hello!</h1>
         <p>

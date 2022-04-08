@@ -11,6 +11,9 @@
 </head>
 
 <body>
+<?php 
+    include "includes/header.html"
+    ?>
     <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
             <form class="row col-10 col-lg-6">
