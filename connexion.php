@@ -11,17 +11,27 @@
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
             <form class="row col-10 col-lg-6">
-                <h1 class="col-12 text-center ">Authenticate</h1>
-                <label class="col-12 mt-3 " for="username ">User Name</label>
-                <input class="col-12 " type="text " name="userame " id="userame " placeholder="Username ">
-                <label class="col-12 mt-3 " for="pass ">Password</label>
-                <input class="col-12 " type="password " name="pass " id="pass " placeholder="Password ">
-                <input type="button " value="Login " id="login " class="btn btn-primary mt-3 col-12 ">
-                <p class="mt-3 ">No account?
-                    <a href="inscription.php ">Sign up here</a> </p>
+                <h1 class="col-12 text-center mb-4 ">Sign in</h1>
+                <div class="mb-3 col-12">
+                    <label for="username" class="form-label">User Name</label>
+                    <input type="email" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="mb-3 col-12"> 
+                    <label for="Pass" class="form-label">Password</label>
+                    <input type="email" class="form-control" id="Pass" placeholder="Password">
+                </div>
+               
+                <div class="col-12">
+                     <input type="button" value="Signin " id="signin " class="btn btn-dark mt-3 col-12">
+                    <p class="mt-3 ">No account?
+                        <a href="inscription.php ">Sign up here</a> 
+                    </p>
+                </div>
+               
+                    
             </form>
 
         </div>

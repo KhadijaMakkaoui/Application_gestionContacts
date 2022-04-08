@@ -28,9 +28,9 @@
                     <input type="email" class="form-control" id="PassVer" placeholder="Verify Password">
                 </div>
                 <div class="col-12">
-                     <input type="button" value="Sign up " id="signup " class="btn btn-dark mt-3 col-12">
+                     <input type="button" value="Sign in " id="signin " class="btn btn-dark mt-3 col-12">
                     <p class="mt-3 ">Already have an account
-                        <a href="inscription.php ">Login here</a> 
+                        <a href="inscription.php ">Sign in here</a> 
                     </p>
                 </div>
                
