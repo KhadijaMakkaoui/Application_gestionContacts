@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -24,7 +23,7 @@
                 </div>
                 <div class="mb-3 col-12"> 
                     <label for="Pass" class="form-label">Password</label>
-                    <input type="email" class="form-control" id="Pass" placeholder="Password">
+                    <input type="email" class="form-control" id="pass" placeholder="Password">
                 </div>
                
                 <div class="col-12">
@@ -32,13 +31,11 @@
                     <p class="mt-3 ">No account?
                         <a href="inscription.php ">Sign up here</a> 
                     </p>
-                </div>
-               
-                    
+                </div>      
             </form>
-
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
