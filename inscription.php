@@ -12,7 +12,7 @@
 
 <body>
 <?php 
-    include "includes/header.html"
+    include "includes/header.html";
     ?>
     <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
@@ -20,19 +20,24 @@
                 <h1 class="col-12 text-center mb-4 ">Sign up</h1>
                 <div class="mb-3 col-12">
                     <label for="username" class="form-label">User Name</label>
-                    <input type="email" class="form-control" id="username" placeholder="Username">
+                    <input type="text" class="form-control insc" id="userName" placeholder="Username">
+               <small class="text-danger" id="error-username"></small>
                 </div>
                 <div class="mb-3 col-12"> 
                     <label for="Pass" class="form-label">Password</label>
-                    <input type="email" class="form-control" id="Pass" placeholder="Password">
+                    <input type="password" class="form-control insc" id="Pass" placeholder="Password">
+               <small class="text-danger" id="error-password"></small>
+                
                 </div>
                 <div class="mb-3 col-12">
                     <label for="PassVer" class="form-label">Verify password</label>
-                    <input type="email" class="form-control" id="PassVer" placeholder="Verify Password">
+                    <input type="password" class="form-control insc" id="PassVer" placeholder="Verify Password">
+                    <small class="text-danger" id="error-password-cofirme"></small>
+               
                 </div>
                 <div class="col-12">
                      <input type="button" value="Sign in " id="signin " class="btn btn-dark mt-3 col-12">
-                    <p class="mt-3 ">Already have an account
+                    <p class="mt-3 ">Already have an account?
                         <a href="inscription.php ">Sign in here</a> 
                     </p>
                 </div>
@@ -42,6 +47,8 @@
 
         </div>
     </div>
+    <script src="script.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
