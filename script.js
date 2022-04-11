@@ -1,11 +1,14 @@
-// const LoginInputs = document.querySelectorAll("input[type='text']");
-// LoginInputs.forEach(element => {
-//     element.addEventListener("blur", () => {
-//         if (!element.value) {
-//             msg = "this field is required";
-//         }
-//     })
-// });
+const LoginInputs = document.querySelectorAll(".login");
+LoginInputs.forEach(element => {
+    element.addEventListener("blur", () => {
+        if (!element.value) {
+            document.querySelector(".req").innerHTML = "All fields are required";
+        } else
+            document.querySelector(".req").innerHTML = "";
+
+
+    })
+});
 const inputName = document.getElementById("userName");
 const inputPassword = document.getElementById("Pass");
 const inputPasswordConfime = document.getElementById("PassVer");
