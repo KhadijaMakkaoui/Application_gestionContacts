@@ -27,7 +27,21 @@ class database{
         //      insert("utilisateurs",['id_u'=>2,'username'=>"Ahmed"]);
 
     }
-   
+    public function update($tableName,$dataArr=array(),$id){
+        $arr = array();
+
+        foreach ($dataArr as $key => $value) {
+            $arr[] = "$key = '$value'"; 
+        }
+
+        $requete="UPDATE  $tableName SET " . implode(',', $arr)." WHERE $id";
+        //$requete .=" WHERE $id";
+        $resultat = $this->pdo_conn->prepare($requete);
+        $resultat->execute();
+        //Exemple
+        //  update("utilisateurs",['username'=>"da"],'id_u=2');
+    }
+    
 }
 
 ?>
