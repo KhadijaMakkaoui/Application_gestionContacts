@@ -47,7 +47,18 @@ class database{
         $resultat->execute();
     }
 
-   
+    public function selectAll($tableName,$where = null){
+        $rows="*";
+        if ($where != null) {
+            $requete="SELECT $rows FROM $tableName WHERE $where";
+        }else{
+            $requete="SELECT $rows FROM $tableName";
+        }
+
+        $resultat = $this->pdo_conn->prepare($requete);
+        $resultat->execute();
+    }
+
 }
 
 ?>
