@@ -41,7 +41,13 @@ class database{
         //Exemple
         //  update("utilisateurs",['username'=>"da"],'id_u=2');
     }
-    
+    public function delete($tableName,$id){
+        $requete="DELETE FROM $tableName WHERE $id ";
+        $resultat = $this->pdo_conn->prepare($requete);
+        $resultat->execute();
+    }
+
+   
 }
 
 ?>
