@@ -58,7 +58,24 @@ class database{
         $resultat = $this->pdo_conn->prepare($requete);
         $resultat->execute();
     }
-
+//fermer la connexion destruction de l'objet pdo_conn
+    public function __destruct(){
+        $this->pdo_conn=null;
+    }
 }
+    // function insert($tableName,$dataArr=array()){
+    //     //Récupérer 
+    //     $table_columns = implode(',', array_keys($dataArr));
+    //     $table_value =  ":".implode(',:', array_keys($dataArr));
+    //     $requete="INSERT INTO $tableName($table_columns) VALUES($table_value)";
+
+    //    $resultat = $this->pdo_conn->prepare($requete);
+    //    foreach($dataArr as $key=>$val){ 
+    //     $resultat->bindValue(':'.$key, $val); 
+    //    }  
+    //    $resultat = $resultat->execute(); 
+    // }
+   
+
 
 ?>
