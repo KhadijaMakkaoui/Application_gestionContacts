@@ -117,8 +117,7 @@ function validateEmail() {
     let email = Inemail.value;
     if (email != "") {
         errE.innerHTML = "";
-        // /i : ignoreCase	Checks whether the "i" modifier is set
-        if (!email.match(/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)) {
+        if (!email.match(/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-\.]+$/)) {
             errE.innerHTML = "Invalid email format";
         }
     } else {
