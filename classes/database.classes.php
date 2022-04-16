@@ -1,5 +1,5 @@
 <?
-class database{
+class Database{
     private $dbName="contact_db";
     private $host="localhost";
     private $username="root";
@@ -57,6 +57,9 @@ class database{
 
         $resultat = $this->pdo_conn->prepare($requete);
         $resultat->execute();
+        return $resultat;
+         //Exemple
+        //  selectAll("utilisateurs",'id_u=2');
     }
 //fermer la connexion destruction de l'objet pdo_conn
     public function __destruct(){
