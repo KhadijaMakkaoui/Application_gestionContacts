@@ -1,5 +1,5 @@
 <?
-class Utilisateur{
+class Utilisateur extends Database{
     //Properiétées
     private $username;
     private $password;
@@ -13,11 +13,12 @@ class Utilisateur{
      * @param date $signUpDate
      * @param date $lastLoginDate
      * */
-    public function __construct($username,$password, $signUpDate, $lastLoginDate){
+    public function __construct($username,$password, $signUpDate){
+        parent::__construct();
         $this->username =$username;
         $this->password =$password;
         $this->signUpDate =$signUpDate;
-        $this->lastLoginDate =$lastLoginDate;
+        $this->lastLoginDate =$_SESSION['lastLoginDate'];
     }
     //Methodes getters
     function getUsername(){
@@ -45,6 +46,29 @@ class Utilisateur{
    function setLastLoginDate($lastLoginDate){
        $this->lastLoginDate =$lastLoginDate;
    }
-
+   function checkUserNamePass(){
+    $res=$this->selectAll("utilisateurs",'username='.$this->username.'AND password='.$this->password);
+    
+    $arr=$res->fetch(PDO::FETCH_ASSOC);
+    if(count($arr)==1){
+          return true;
+    }
+    else{
+        return false;
+    }
+   }
+   function checkUserName(){
+    $res=$this->selectAll("utilisateurs",'username='.$this->username);
+    
+    $arr=$res->fetch(PDO::FETCH_ASSOC);
+    if(count($arr)==1){
+          return true;
+    }
+    else{
+        return false;
+    }
+   }
+  
+   
 }
 ?>
