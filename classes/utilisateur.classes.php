@@ -43,9 +43,9 @@ class Utilisateur extends Database{
     function setSignUpDate($signUpDate){
         $this->signUpDate =$signUpDate;
     }
-   function setLastLoginDate($lastLoginDate){
-       $this->lastLoginDate =$lastLoginDate;
-   }
+//    function setLastLoginDate($lastLoginDate){
+//        $this->lastLoginDate =$lastLoginDate;
+//    }
    function checkUserNamePass(){
     $res=$this->selectAll("utilisateurs",'username='.$this->username.'AND password='.$this->password);
     
@@ -69,13 +69,20 @@ class Utilisateur extends Database{
     }
    }
    function logIn(){
-       if($this->checkUserNamePass()){
-        header('Location: profile.php');
-        return true;
-       }
-       else
-        return false;
+    if($this->checkUserNamePass()){
+     header('Location: profile.php');
+     return true;
+    }
+    else
+     return false;
    }
-   
+   function singnUp(){
+    if($this->checkUserName()){
+        return "This username already exists";
+    }
+    else{
+         $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'lastLogin'=>$this->lastLogin,'signupDate'=>$this->signupDate]);
+    }
+   }
 }
 ?>
