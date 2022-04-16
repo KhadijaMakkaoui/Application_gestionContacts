@@ -68,7 +68,11 @@ class Utilisateur extends Database{
         return false;
     }
    }
-  
+   function logIn(){
+       if($this->checkUserNamePass()){
+        header('Location: profile.php');
+       }
+   }
    
 }
 ?>
