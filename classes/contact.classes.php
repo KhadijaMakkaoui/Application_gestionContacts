@@ -1,4 +1,4 @@
-<?
+<?php
 class Contact extends database{
     //Properiétées
     private $id;

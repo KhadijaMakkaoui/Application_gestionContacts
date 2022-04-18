@@ -1,4 +1,4 @@
-<?
+<?php
 class Database{
     private $dbName="contact_db";
     private $host="localhost";

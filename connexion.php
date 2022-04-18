@@ -1,9 +1,12 @@
 <?php
 session_start();
+require "./classes/database.classes.php";
+require "./classes/contact.classes.php";
+require "./classes/utilisateur.classes.php";
 ?>
 <?php
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "./classes/utilisateur.classes.php";
+    // require "./classes/utilisateur.classes.php";
 
     //   $user=new Utilisateur($_POST['username'],$_POST['pass']);
 $user=new user("Ahmed","1234");
