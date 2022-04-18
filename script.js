@@ -32,7 +32,7 @@ function validateName() {
     if (username != "") {
         errName.innerHTML = "";
         // /i : ignoreCase	Checks whether the "i" modifier is set
-        if (!username.match(/^[a-z0-9]{3,}$/i)) {
+        if (!username.match(/^[a-z0-9_]{3,}$/i)) {
             errName.innerHTML = "Invalid username format(must containe 3 alphanumeric characters at least)";
         }
     } else {

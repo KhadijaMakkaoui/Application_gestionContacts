@@ -1,6 +1,7 @@
 <?
-class Contact{
+class Contact extends database{
     //Properiétées
+    private $id;
     private $name;
     private $phone;
     private $adresse;
@@ -13,7 +14,8 @@ class Contact{
      * @param string $adresse
      * @param int $userId
      * */
-    public function __construct($name,$phone, $adresse, $userId){
+    public function __construct($id,$name,$phone, $adresse, $userId){
+        $this->id =$id;
         $this->name =$name;
         $this->phone =$phone;
         $this->adresse =$adresse;
@@ -51,6 +53,14 @@ class Contact{
    function setUserId($userId){
        $this->userId = $userId;
    }
+   function AddContact(Contact $contact){
+       $contact->insert("contacts",['id'=>$this->id,'name'=>$this->name,'phone'=>$this->phone,'adresse'=>$this->adresse,'userId'=>$this->userId]);
+
+   }
+   function UpdateContact(Contact $contact){
+    $contact->update("contacts",['name'=>$this->name,'phone'=>$this->phone,'adresse'=>$this->adresse,'userId'=>$this->userId],$this->id);
+
+}
 
 }
 ?>

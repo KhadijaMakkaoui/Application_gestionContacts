@@ -1,5 +1,5 @@
 <?
-class Utilisateur extends Database{
+class user extends Database{
     //Properiétées
     private $username;
     private $password;
@@ -13,8 +13,14 @@ class Utilisateur extends Database{
      * @param date $signUpDate
      * @param date $lastLoginDate
      * */
-    public function __construct($username,$password, $signUpDate){
+    public function __construct($username,$password, $signUpDate=null){
         parent::__construct();
+        // try{
+        //     $this->pdo_conn = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->username, $this->password );
+        // }
+        // catch(PDOException $e){
+        //     echo $e ->getMessage();
+        // }
         $this->username =$username;
         $this->password =$password;
         $this->signUpDate =$signUpDate;
@@ -70,11 +76,14 @@ class Utilisateur extends Database{
    }
    function logIn(){
     if($this->checkUserNamePass()){
-     header('Location: profile.php');
-     return true;
+    //  header('Location: profile.php');
+       echo "true";
     }
     else
-     return false;
+    echo "false";
+
+    // header('Location: connexion.php');
+
    }
    function singnUp(){
     if($this->checkUserName()){
@@ -85,4 +94,6 @@ class Utilisateur extends Database{
     }
    }
 }
+// $user=new Utilisateur($_POST['username'],$_POST['pass']);
+// echo "hello";
 ?>
