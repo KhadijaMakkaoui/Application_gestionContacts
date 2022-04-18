@@ -16,15 +16,16 @@ class user extends Database{
     public function __construct($username,$password, $signUpDate=null){
         parent::__construct();
         // try{
-        //     $this->pdo_conn = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->username, $this->password );
+            // $this->pdo_conn = new PDO("mysql:host=localhost;dbname=contact_db", "root", "");
         // }
         // catch(PDOException $e){
         //     echo $e ->getMessage();
         // }
+
         $this->username =$username;
         $this->password =$password;
         $this->signUpDate =$signUpDate;
-        $this->lastLoginDate =$_SESSION['lastLoginDate'];
+        // $this->lastLoginDate =date('Y-m-d');
     }
     //Methodes getters
     function getUsername(){
@@ -53,21 +54,24 @@ class user extends Database{
 //        $this->lastLoginDate =$lastLoginDate;
 //    }
    function checkUserNamePass(){
-    $res=$this->selectAll("utilisateurs",'username='.$this->username.'AND password='.$this->password);
+    // $res=$this->selectAll("utilisateurs","username='$this->username' AND password= '$this->password'");
+    // $res=$this->selectAll("utilisateurs","username=$this->username");
+    $res=$this->selectAll("utilisateurs");
     
-    $arr=$res->fetch(PDO::FETCH_ASSOC);
-    if(count($arr)==1){
-          return true;
+    // $arr=$res->fetch(PDO::FETCH_ASSOC);
+    if(count($res)==1){
+          echo "true";
     }
     else{
-        return false;
+        echo "false";
     }
    }
    function checkUserName(){
-    $res=$this->selectAll("utilisateurs",'username='.$this->username);
+    //    $res=array();
+    $res=$this->selectAll("utilisateurs");
     
-    $arr=$res->fetch(PDO::FETCH_ASSOC);
-    if(count($arr)==1){
+    // $arr=$res->fetch(PDO::FETCH_ASSOC);
+    if(count($res)==1){
           return true;
     }
     else{
@@ -86,14 +90,15 @@ class user extends Database{
 
    }
    function singnUp(){
-    if($this->checkUserName()){
-        return "This username already exists";
-    }
-    else{
-         $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'lastLogin'=>$this->lastLogin,'signupDate'=>$this->signupDate]);
-    }
+    // if($this->checkUserName()){
+    //     echo "This username already exists";
+    // }
+    // else{
+        $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'signupDate'=>date('Y-m-d'),'lastLogin'=>date('Y-m-d')]);
+        header("Location:connexion.php");
+         // }
    }
 }
-// $user=new Utilisateur($_POST['username'],$_POST['pass']);
-// echo "hello";
+
+
 ?>
