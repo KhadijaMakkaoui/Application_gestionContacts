@@ -5,20 +5,15 @@ require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
 ?>
 <?php
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // require "./classes/utilisateur.classes.php";
-
-    //   $user=new Utilisateur($_POST['username'],$_POST['pass']);
-$user=new user("Ahmed","1234");
-
-$user->logIn();
-  
-  // $date = date("Y-m-d h:i:s A");
-//   header("Location: contactList.php");
+$visibility="d-none";
+if(isset($_GET['error_msg'])){
+    $visibility="";
 }
-
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user=new user($_POST['username'],$_POST['pass']);
+    $user->logIn();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,19 +34,18 @@ $user->logIn();
                 <h1 class="col-12 text-center mb-4 ">Sign in</h1>
                 
                 <div class="alert alert-danger col-11   <?php echo $visibility ?>" role="alert">
-                 <?php //echo $errMessage ?>
-                 
+                 <?php echo $_GET['error_msg'] ?>
                 </div>
                     <small class="req text-danger"></small>
 
                 <div class="mb-3 col-12">
                     <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control login" id="username" placeholder="Username">
+                    <input type="text" class="form-control login" id="username" name="username" placeholder="Username">
                     <!-- <small class="reqU text-danger"></small> -->
                 </div>
                 <div class="mb-3 col-12"> 
                     <label for="Pass" class="form-label">Password</label>
-                    <input type="password" class="form-control login" id="pass" placeholder="Password">
+                    <input type="password" class="form-control login"  id="pass" name="pass" placeholder="Password">
                     <!-- <small class="reqP text-danger"></small> -->
                 </div>
                
