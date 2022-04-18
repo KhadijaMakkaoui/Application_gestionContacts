@@ -94,9 +94,10 @@ class user extends Database{
     //     echo "This username already exists";
     // }
     // else{
-        $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'signupDate'=>date('Y-m-d'),'lastLogin'=>date('Y-m-d')]);
-        header("Location:connexion.php");
-         // }
+        $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'signupDate'=>date('Y-m-d'),'lastLogin'=>null]);
+           header("Location:connexion.php");
+           
+
    }
 }
 
