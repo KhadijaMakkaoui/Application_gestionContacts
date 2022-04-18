@@ -3,23 +3,25 @@ class Contact extends database{
     //Properiétées
     private $id;
     private $name;
+    private $email;
     private $phone;
     private $adresse;
-    private $userId;
+    private $userName;
     /**
      * 
      * constructeur
      * @param string $name
      * @param string $phone
      * @param string $adresse
-     * @param int $userId
+     * @param int $userName
      * */
-    public function __construct($id,$name,$phone, $adresse, $userId){
-        $this->id =$id;
+    public function __construct($name,$email,$phone=null, $adresse=null, $userName){
+        parent::__construct();
         $this->name =$name;
+        $this->email =$email;
         $this->phone =$phone;
         $this->adresse =$adresse;
-        $this->userId =$userId;
+        $this->userName =$userName;
     }
     //Methodes getters
     function getName(){
@@ -34,8 +36,8 @@ class Contact extends database{
     function getEmail(){
         return $this->email;
     }
-    function getUserId(){
-        return $this->userId;
+    function getuserName(){
+        return $this->userName;
     }
     //Methodes setters
     function setName($name){
@@ -50,17 +52,21 @@ class Contact extends database{
     function setEmail($email){
         $this->email = $email;
     }
-   function setUserId($userId){
-       $this->userId = $userId;
+   function setuserName($userName){
+       $this->userName = $userName;
    }
-   function AddContact(Contact $contact){
-       $contact->insert("contacts",['id'=>$this->id,'name'=>$this->name,'phone'=>$this->phone,'adresse'=>$this->adresse,'userId'=>$this->userId]);
-
+   function AddContact(){
+       if($this->name!="" && $this->email!=""){
+            $this->insert("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName]);
+            header("Location:contactList.php");
+       }
+        else
+         header("Location:contactList.php?error_msg=Name field and Email field are required");
    }
-   function UpdateContact(Contact $contact){
-    $contact->update("contacts",['name'=>$this->name,'phone'=>$this->phone,'adresse'=>$this->adresse,'userId'=>$this->userId],$this->id);
+//    function UpdateContact(Contact $contact){
+//     $contact->update("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName],$this->id);
 
-}
+// }
 
 }
 ?>
