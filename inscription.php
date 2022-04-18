@@ -5,10 +5,15 @@ require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
 ?>
 <?php
+
  if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $user=new user($_POST["username"],$_POST["password"]);
     $user->singnUp($user);
 
+ }
+ $visibility="d-none";
+ if(isset($_GET['error_msg'])){
+     $visibility="";
  }
 ?>
 <!DOCTYPE html>
@@ -27,6 +32,10 @@ require "./classes/utilisateur.classes.php";
 <?php 
     include "includes/header.html";
     ?>
+    <div class="alert alert-danger col-11   <?php echo $visibility ?>" role="alert">
+                 <?php echo $_GET['error_msg'] ?>
+                 
+                </div>
     <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
             <form method="POST" class="row col-10 col-lg-6">

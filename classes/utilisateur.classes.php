@@ -50,28 +50,23 @@ class user extends Database{
     function setSignUpDate($signUpDate){
         $this->signUpDate =$signUpDate;
     }
-//    function setLastLoginDate($lastLoginDate){
-//        $this->lastLoginDate =$lastLoginDate;
-//    }
+   function setLastLoginDate($lastLoginDate){
+       $this->lastLoginDate =$lastLoginDate;
+   }
    function checkUserNamePass(){
-    // $res=$this->selectAll("utilisateurs","username='$this->username' AND password= '$this->password'");
-    // $res=$this->selectAll("utilisateurs","username=$this->username");
-    $res=$this->selectAll("utilisateurs");
-    
-    // $arr=$res->fetch(PDO::FETCH_ASSOC);
-    if(count($res)==1){
-          echo "true";
+    $res=$this->selectAll("utilisateurs","username='$this->username' AND password= '$this->password'");
+
+    if($res){
+          return true;
     }
     else{
-        echo "false";
+        return false;
     }
    }
    function checkUserName(){
-    //    $res=array();
-    $res=$this->selectAll("utilisateurs");
+    $res=$this->selectAll("utilisateurs","username='$this->username'");
     
-    // $arr=$res->fetch(PDO::FETCH_ASSOC);
-    if(count($res)==1){
+    if($res){
           return true;
     }
     else{
@@ -79,24 +74,22 @@ class user extends Database{
     }
    }
    function logIn(){
-    if($this->checkUserNamePass()){
-    //  header('Location: profile.php');
-       echo "true";
-    }
-    else
-    echo "false";
-
-    // header('Location: connexion.php');
-
+        if($this->checkUserNamePass()){
+            $_SESSION['username']=$this->username;
+            $this->setLastLoginDate(date("Y-m-d H:i:s"));
+            header('Location: profile.php');
+        }
+        else
+            header('Location: connexion.php?error_msg=Your username or password is incorrect');
    }
    function singnUp(){
-    // if($this->checkUserName()){
-    //     echo "This username already exists";
-    // }
-    // else{
+    if($this->checkUserName()){
+        header('Location: inscription.php?error_msg=This username already exists');
+    }
+    else{
         $this->insert("utilisateurs",['username'=>$this->username,'password'=>$this->password,'signupDate'=>date('Y-m-d'),'lastLogin'=>null]);
-           header("Location:connexion.php");
-           
+        header("Location:connexion.php");
+    }
 
    }
 }
