@@ -22,6 +22,7 @@ class Database{
         $requete="INSERT INTO $tableName($table_columns) VALUES('$table_value')";
 
        $resultat = $this->pdo_conn->prepare($requete);
+       
        $resultat->execute();
         //Exemple
         //      insert("utilisateurs",['id_u'=>2,'username'=>"Ahmed"]);
@@ -54,10 +55,10 @@ class Database{
         }else{
             $requete="SELECT $rows FROM $tableName";
         }
-
         $resultat = $this->pdo_conn->prepare($requete);
         $resultat->execute();
-        return $resultat;
+        $res = $resultat->fetchAll();
+        return $res;
          //Exemple
         //  selectAll("utilisateurs",'id_u=2');
     }
@@ -78,7 +79,7 @@ class Database{
     //    }  
     //    $resultat = $resultat->execute(); 
     // }
-   
+
 
 
 ?>
