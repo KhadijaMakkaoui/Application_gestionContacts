@@ -32,14 +32,13 @@ require "./classes/utilisateur.classes.php";
 <?php 
     include "includes/header.html";
     ?>
-    <div class="alert alert-danger col-11   <?php echo $visibility ?>" role="alert">
-                 <?php echo $_GET['error_msg'] ?>
-                 
-                </div>
     <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
             <form method="POST" class="row col-10 col-lg-6">
                 <h1 class="col-12 text-center mb-4 ">Sign up</h1>
+                <div class="alert alert-danger col-12  <?php echo $visibility ?>" role="alert">
+                    <?php echo $_GET['error_msg'] ?>
+                </div>
                 <div class="mb-3 col-12">
                     <label for="username" class="form-label">User Name</label>
                     <input type="text" class="form-control insc" name="username" placeholder="Username">
