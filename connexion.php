@@ -5,6 +5,7 @@ require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
 ?>
 <?php
+//Afficher message d'erreur
 $visibility="d-none";
 if(isset($_GET['error_msg'])){
     $visibility="";
@@ -12,6 +13,7 @@ if(isset($_GET['error_msg'])){
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user=new user($_POST['username'],$_POST['pass']);
     $user->logIn();
+    
 }
 ?>
 <!DOCTYPE html>
@@ -32,25 +34,24 @@ if(isset($_GET['error_msg'])){
         <div class=" container vh-100 row justify-content-center align-content-center ">
             <form method="POST" class="row col-10 col-lg-6 justify-content-center">
                 <h1 class="col-12 text-center mb-4 ">Sign in</h1>
-                
-                <div class="alert alert-danger col-11   <?php echo $visibility ?>" role="alert">
+                <div class="alert alert-danger col-11 <?php echo $visibility ?>" role="alert">
                  <?php echo $_GET['error_msg'] ?>
                 </div>
                     <small class="req text-danger"></small>
 
                 <div class="mb-3 col-12">
                     <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control login" id="username" name="username" placeholder="Username">
-                    <!-- <small class="reqU text-danger"></small> -->
+                    <input type="text" class="form-control login" id="Logusername" name="username" placeholder="Username">
+                    <!-- <small class="reqU text-danger" id="errUsername"></small> -->
                 </div>
                 <div class="mb-3 col-12"> 
                     <label for="Pass" class="form-label">Password</label>
-                    <input type="password" class="form-control login"  id="pass" name="pass" placeholder="Password">
-                    <!-- <small class="reqP text-danger"></small> -->
+                    <input type="password" class="form-control login"  id="Logpass" name="pass" placeholder="Password">
+                    <!-- <small class="reqP text-danger" id="errPass"></small> -->
                 </div>
                
                 <div class="col-12">
-                     <input type="submit" value="submit " id="submit " class="btn btn-dark mt-3 col-12">
+                     <input type="submit" value="submit " id="submit " class="btn btn-dark mt-3 col-12 ">
                     <p class="mt-3 ">No account?
                         <a href="inscription.php ">Sign up here</a> 
                     </p>
