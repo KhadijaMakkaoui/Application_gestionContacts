@@ -63,10 +63,15 @@ class Contact extends database{
         else
          header("Location:contactList.php?error_msg=Name field and Email field are required");
    }
-//    function UpdateContact(Contact $contact){
-//     $contact->update("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName],$this->id);
+   function UpdateContact($id){
+    $this->update("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName],"id=$id");
+    header("Location:contactList.php");
 
-// }
+}
+function DeleteContact($id){
+    $this->delete("contacts",$id);
+    header("Location:contactList.php");
+}
 
 }
 ?>
