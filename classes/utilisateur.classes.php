@@ -13,7 +13,7 @@ class user extends Database{
      * @param date $signUpDate
      * @param date $lastLoginDate
      * */
-    public function __construct($username,$password, $signUpDate=null){
+    public function __construct($username,$password=null, $signUpDate=null){
         parent::__construct();
         // try{
             // $this->pdo_conn = new PDO("mysql:host=localhost;dbname=contact_db", "root", "");
@@ -73,10 +73,15 @@ class user extends Database{
         return false;
     }
    }
+   function getUser(){
+    $res=$this->selectAll("utilisateurs","username='$this->username'");
+    return $res;
+   }
    function logIn(){
         if($this->checkUserNamePass()){
             $_SESSION['username']=$this->username;
             $this->setLastLoginDate(date("Y-m-d H:i:s"));
+            $this->update("utilisateurs",['lastLogin'=>$this->lastLoginDate],"username='$this->username'");
             header('Location: profile.php');
         }
         else
@@ -92,6 +97,7 @@ class user extends Database{
     }
 
    }
+   
 }
 
 
