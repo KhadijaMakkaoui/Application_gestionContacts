@@ -13,12 +13,10 @@ if(isset($_GET['error_msg'])){
 $db=new database();
 $get_contact=$db->selectAll("contacts","id='".$_GET['id']."'");
 
-//  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $contact=new Contact($_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse'],$_SESSION['username']);
-//     $contact->AddContact();
-    
-// }
-
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $contact=new Contact($_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse'],$_SESSION['username']);
+    $contact->UpdateContact($_GET['id']);   
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +45,7 @@ $get_contact=$db->selectAll("contacts","id='".$_GET['id']."'");
                 <label for="phone" class="form-label">Phone</label>
                 <input type="text" value="<?php  echo $get_contact[0]["phone"] ?>" class="form-control contactList" name="phone"  id="phone" placeholder="Enter phone">
                 <small class="text-danger" id="errP"></small>
-            
+
             </div>
             <div class="mb-3 col-12">
                 <label for="email" class="form-label">Email address</label>
@@ -61,9 +59,8 @@ $get_contact=$db->selectAll("contacts","id='".$_GET['id']."'");
                 <small class="text-danger" id="errA"></small>
             </div>
             <div class="col-6 mx-auto">
-                <input type="submit" value="Save" id="save " class="btn btn-dark mt-3 col-12 ">
+                <input type="submit" value="Update" id="save " class="btn btn-dark mt-3 col-12 ">
                 <button class="btn btn-secondary mt-3 col-12"><a href="contactList.php" class="text-light">Cancel</a></button>
-            
             </div>
 
         </form>
