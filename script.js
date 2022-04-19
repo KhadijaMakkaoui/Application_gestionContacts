@@ -1,11 +1,17 @@
 //Validation page de connexion
 const LoginInputs = document.querySelectorAll(".login");
+const LoginUsername = document.querySelector("#Logusername");
+const LoginPass = document.querySelector("#Logpass");
+const btnSubmit = document.querySelector("#submit");
+
 LoginInputs.forEach(element => {
     element.addEventListener("blur", () => {
-        if (!element.value) {
+        if (LoginUsername.value == "" || LoginPass.value == "") {
             document.querySelector(".req").innerHTML = "All fields are required";
-        } else
+        } else {
             document.querySelector(".req").innerHTML = "";
+        }
+
     })
 });
 
