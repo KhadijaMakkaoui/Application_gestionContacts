@@ -11,12 +11,14 @@
 
 <body>
 <?php 
-    include "includes/header.html";
+require "./classes/database.classes.php";
+session_destroy();
+    include "includes/header.php";
     ?>
     <div class=" bg-light vh-100 row flex-column justify-content-center align-content-center">
-        <h1>Hello!</h1>
+        <h1>Hello,Welcome to Contact Application</h1>
         <p>
-            <a href="inscription.php"></a>
+            <a href="inscription.php">Sign up here</a>
             to start creating your contacts list.
         </p>
         <p>Already have an account?
