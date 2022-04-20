@@ -88,7 +88,10 @@ class user extends Database{
             header('Location: connexion.php?error_msg=Your username or password is incorrect');
    }
    function singnUp(){
-    if($this->checkUserName()){
+    if(empty($this->username) ||empty($this->password)){
+        header('Location: inscription.php?error_msg=All fields are required');
+    }
+    else if($this->checkUserName()){
         header('Location: inscription.php?error_msg=This username already exists');
     }
     else{
