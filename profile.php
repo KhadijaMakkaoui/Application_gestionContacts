@@ -11,26 +11,31 @@
 
 <body>
 <?php 
-    include "includes/header.html"
+    require "./classes/database.classes.php";
+    require "./classes/utilisateur.classes.php";
+
+    include "includes/header.php";
+    $u=new user($_SESSION['username']);
+    $info=$u->getUserInfo();
     ?>
     <div class="container">
-        <h2 class="mb-5">Welcome, alex!</h2>
+        <h2 class="mb-5">Welcome,<?php echo $_SESSION['username'] ?>!</h2>
         <h4>Your profile:</h4>
 
         <table class="table table-striped">
             <tbody>
                 <tr>
                     <th scope="row">Username</th>
-                    <td>alex</td>
+                    <td><?php echo $_SESSION['username'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Signup date:</th>
-                    <td>Sun,07 Apr 2019 16:11:25</td>
+                    <td><?php echo $info[0]['signupDate'] ?></td>
 
                 </tr>
                 <tr>
                     <th scope="row">Last login:</th>
-                    <td>Mon,08 Mar 2020 16:11:25</td>
+                    <td><?php echo $info[0]['lastLogin'] ?></td>
 
                 </tr>
             </tbody>
