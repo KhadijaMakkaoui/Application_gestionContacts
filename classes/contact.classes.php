@@ -55,6 +55,10 @@ class Contact extends database{
    function setuserName($userName){
        $this->userName = $userName;
    }
+   function getContactInfo($id){
+    $res=$this->selectAll("contacts","fk_username='$id'");
+    return $res;
+   }
    function AddContact(){
        if($this->name!="" && $this->email!=""){
             $this->insert("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName]);
