@@ -13,7 +13,7 @@ if(isset($_GET['error_msg'])){
 $name=$adresse=$phone=$email="";
 $contact=new Contact($name,$email,$phone,$adresse,$_SESSION['username']);
 
-$get_contact=$contact->getContactInfo();
+$get_contact=$contact->getContactInfoId($_GET['id']);
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact->setName($_POST['name']);
