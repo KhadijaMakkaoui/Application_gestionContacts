@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require "./classes/database.classes.php";
 require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
@@ -10,12 +10,19 @@ $visibility="d-none";
 if(isset($_GET['error_msg'])){
     $visibility="";
 }
-$db=new database();
-$get_contact=$db->selectAll("contacts","id='".$_GET['id']."'");
+$name=$adresse=$phone=$email="";
+$contact=new Contact($name,$email,$phone,$adresse,$_SESSION['username']);
+
+$get_contact=$contact->getContactInfo();
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $contact=new Contact($_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse'],$_SESSION['username']);
-    $contact->UpdateContact($_GET['id']);   
+    $contact->setName($_POST['name']);
+    $contact->setEmail($_POST['email']);
+    $contact->setPhone($_POST['phone']);
+    $contact->setAdresse($_POST['adresse']);
+
+    $contact->UpdateContact($_GET['id']); 
+    
 }
 ?>
 <!DOCTYPE html>
