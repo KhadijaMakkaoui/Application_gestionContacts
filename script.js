@@ -113,8 +113,8 @@ function validatePhone() {
     let ph = phone.value;
     if (ph != "") {
         errP.innerHTML = "";
-        if (!ph.match(/^[0-9\+\-\(\)]*$/)) {
-            errP.innerHTML = "Phone number must contain only numbers, + and - characters ";
+        if (!ph.match(/^[0-9|\+|\-|\(|\)]*$/)) {
+            errP.innerHTML = "Phone number must contain only numbers and symboles + - and ()  ";
         }
     }
 }
