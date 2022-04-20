@@ -1,5 +1,4 @@
 <?php
-session_start();
 require "./classes/database.classes.php";
 require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
@@ -28,10 +27,11 @@ if(isset($_GET['error_msg'])){
 
 <body>
 <?php 
-    include "includes/header.html";
+    include "includes/header.php";
     ?>
 <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
+        <img src="contact-book.png" classe="img-responsive" >
             <form method="POST" class="row col-10 col-lg-6 justify-content-center">
                 <h1 class="col-12 text-center mb-4 ">Sign in</h1>
                 <div class="alert alert-danger col-11 <?php echo $visibility ?>" role="alert">
