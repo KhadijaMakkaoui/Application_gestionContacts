@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require "./classes/database.classes.php";
 require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
@@ -30,7 +30,7 @@ require "./classes/utilisateur.classes.php";
 
 <body>
 <?php 
-    include "includes/header.html";
+    include "includes/header.php";
     ?>
     <div class="container">
         <div class=" container vh-100 row justify-content-center align-content-center ">
@@ -41,25 +41,25 @@ require "./classes/utilisateur.classes.php";
                 </div>
                 <div class="mb-3 col-12">
                     <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control insc" name="username" placeholder="Username">
+                    <input type="text" class="form-control insc" name="username" id="userName" placeholder="Username">
                <small class="text-danger" id="error-username"></small>
                 </div>
                 <div class="mb-3 col-12"> 
                     <label for="Pass" class="form-label">Password</label>
-                    <input type="password" class="form-control insc" name="password" placeholder="Password">
+                    <input type="password" class="form-control insc" name="password" id="Pass" placeholder="Password">
                <small class="text-danger" id="error-password"></small>
                 
                 </div>
                 <div class="mb-3 col-12">
                     <label for="PassVer" class="form-label">Verify password</label>
-                    <input type="password" class="form-control insc" id="PassVer" placeholder="Verify Password">
+                    <input type="password" class="form-control insc" id="PassVer"  placeholder="Verify Password">
                     <small class="text-danger" id="error-password-cofirme"></small>
                
                 </div>
                 <div class="col-12">
                      <input type="submit" value="Sign in " id="signin" class="btn btn-dark mt-3 col-12">
                     <p class="mt-3 ">Already have an account?
-                        <a href="inscription.php ">Sign in here</a> 
+                        <a href="connexion.php ">Sign in here</a> 
                     </p>
                 </div>
                
