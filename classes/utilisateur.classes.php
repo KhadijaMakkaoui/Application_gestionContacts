@@ -73,7 +73,7 @@ class user extends Database{
         return false;
     }
    }
-   function getUser(){
+   function getUserInfo(){
     $res=$this->selectAll("utilisateurs","username='$this->username'");
     return $res;
    }
