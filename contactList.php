@@ -1,5 +1,6 @@
 <?php
-session_start();
+// session_start();
+
 require "./classes/database.classes.php";
 require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
@@ -10,13 +11,22 @@ $visibility="d-none";
 if(isset($_GET['error_msg'])){
     $visibility="";
 }
-$db=new database();
-$arr_contact=$db->selectAll("contacts","fk_username='".$_SESSION['username']."'");
+$name=$adresse=$phone=$email="";
+$contact=new Contact($name,$email,$phone,$adresse,$_SESSION['username']);
+
+$arr_contact=$contact->getContactInfo();
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $contact=new Contact($_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse'],$_SESSION['username']);
+    $contact->setName($_POST['name']);
+    $contact->setEmail($_POST['email']);
+    $contact->setPhone($_POST['phone']);
+    $contact->setAdresse($_POST['adresse']);
+   
     $contact->AddContact();
     
+}
+if(isset($_GET['del'])){
+    $contact->DeleteContact($_GET['del']);
 }
 ?>
 <!DOCTYPE html>
@@ -33,7 +43,7 @@ $arr_contact=$db->selectAll("contacts","fk_username='".$_SESSION['username']."'"
 
 <body>
 <?php 
-    include "includes/header.html";
+    include "includes/header.php";
     ?>
     <div class="container">
         <h1 class="my-5">Contacts</h1>
@@ -57,7 +67,7 @@ $arr_contact=$db->selectAll("contacts","fk_username='".$_SESSION['username']."'"
                                 <td><?php echo $row['adresse']; ?></td>
                                 <td>
                                     <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-                                    <a href="">Delete</a>
+                                    <a href="contactList.php?del=<?php echo $row['id']; ?>" >Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -72,8 +82,8 @@ $arr_contact=$db->selectAll("contacts","fk_username='".$_SESSION['username']."'"
         </div>
         <hr>
         <h3 id="title">Add contact:</h3>
-        <div class="alert alert-danger col-11 <?php echo $visibility ?>" role="alert">
-                 <?php echo $_GET['error_msg'] ?>
+        <div class="alert alert-danger col-11 <?php echo "$visibility" ?>" role="alert">
+                 <?php if(isset($_GET['error_msg'])) echo $_GET['error_msg'] ?>
                 </div>
         <form action="" method="POST" class="row my-5">
             <div class="mb-3 col-6">
@@ -98,7 +108,7 @@ $arr_contact=$db->selectAll("contacts","fk_username='".$_SESSION['username']."'"
                 <small class="text-danger" id="errA"></small>
             </div>
             <div class="col-6 mx-auto">
-                <input type="submit" value="Save" id="save " class="btn btn-dark mt-3 col-12 ">
+                <input type="submit" value="Save" id="save " class="btn btn-info mt-3 col-12 ">
             </div>
 
         </form>
