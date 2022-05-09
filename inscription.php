@@ -32,9 +32,15 @@ require "./classes/utilisateur.classes.php";
 <?php 
     include "includes/header.php";
     ?>
-    <div class="container">
-        <div class=" container vh-100 row justify-content-center align-content-center ">
-            <form method="POST" class="row col-10 col-lg-6">
+    <div class="container h-100">
+    <div class="row d-flex justify-content-md-center align-items-center vh-100">
+           <div class="col-12 col-lg-6">
+            <img src="Signup-pic.png" class="img-fluid" >
+
+            </div>
+            <div class="col-12 col-lg-6">
+
+            <form method="POST" class="row">
                 <h1 class="col-12 text-center mb-4 ">Sign up</h1>
                 <div class="alert alert-danger col-12  <?php echo $visibility ?>" role="alert">
                     <?php echo $_GET['error_msg'] ?>
@@ -68,6 +74,7 @@ require "./classes/utilisateur.classes.php";
 
         </div>
     </div>
+</div>
     <script src="script.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 </body>

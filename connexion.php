@@ -29,10 +29,15 @@ if(isset($_GET['error_msg'])){
 <?php 
     include "includes/header.php";
     ?>
-<div class="container">
-        <div class=" container vh-100 row justify-content-center align-content-center ">
-        <img src="contact-book.png" classe="img-responsive" >
-            <form method="POST" class="row col-10 col-lg-6 justify-content-center">
+<div class="container h-100">
+    <div class="row d-flex justify-content-md-center align-items-center vh-100">
+           <div class="col-12 col-lg-6">
+            <img src="login-pic.png" class="img-fluid" >
+
+            </div>
+            <div class="col-12 col-lg-6">
+
+            <form method="POST" class="row ">
                 <h1 class="col-12 text-center mb-4 ">Sign in</h1>
                 <div class="alert alert-danger col-11 <?php echo $visibility ?>" role="alert">
                  <?php echo $_GET['error_msg'] ?>
@@ -59,6 +64,8 @@ if(isset($_GET['error_msg'])){
             </form>
         </div>
     </div>
+</div>
+    
     <script src="script.js"></script>
 </body>
 

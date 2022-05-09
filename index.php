@@ -15,15 +15,24 @@ require "./classes/database.classes.php";
 session_destroy();
     include "includes/header.php";
     ?>
-    <div class=" bg-light vh-100 row flex-column justify-content-center align-content-center">
-        <h1>Hello,Welcome to Contact Application</h1>
-        <p>
-            <a href="inscription.php">Sign up here</a>
-            to start creating your contacts list.
-        </p>
-        <p>Already have an account?
-            <a href="connexion.php">Login here</a>
-        </p>
+    <div class="container h-100">
+    <div class="row d-flex justify-content-md-center align-items-center vh-100">
+
+    <div class="col-12 col-lg-6">
+        <img src="index_pic.png" class="img-fluid">
+       </div>
+       <div class=" col-12 col-lg-6">
+            <h2>Hello,Welcome to Contact Application</h2>
+            <p>
+                <a href="inscription.php">Sign up here</a>
+                to start creating your contacts list.
+            </p>
+            <p>Already have an account?
+                <a href="connexion.php">Login here</a>
+            </p>
+        </div>
+      
+        </div>
     </div>
 </body>
 
