@@ -6,27 +6,22 @@ require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
 ?>
 <?php
+
 //Afficher message d'erreur
 $visibility="d-none";
 if(isset($_GET['error_msg'])){
     $visibility="";
 }
 $name=$adresse=$phone=$email="";
-$contact=new Contact($name,$email,$phone,$adresse,$_SESSION['username']);
+$user=new user();
 
-$arr_contact=$contact->getContactInfo();
+$arr_contact=$user->getContactList();
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $contact->setName($_POST['name']);
-    $contact->setEmail($_POST['email']);
-    $contact->setPhone($_POST['phone']);
-    $contact->setAdresse($_POST['adresse']);
-   
-    $contact->AddContact();
-    
+    $user->AddContactByUser($_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse']);
 }
 if(isset($_GET['del'])){
-    $contact->DeleteContact($_GET['del']);
+    $user->DeleteContact($_GET['del']);
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +43,7 @@ if(isset($_GET['del'])){
     <div class="container">
         <h1 class="my-5">Contacts</h1>
         <h3>Contacts list:</h3>
-        <div id="listContact">
+        <div id="listContact" class="table-responsive">
         <?php if(!empty($arr_contact)): ?>
             <table class="table table-striped">
                 <thead>
@@ -66,8 +61,8 @@ if(isset($_GET['del'])){
                                 <td><?php echo $row['phone']; ?></td>
                                 <td><?php echo $row['adresse']; ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-                                    <a href="contactList.php?del=<?php echo $row['id']; ?>" >Delete</a>
+                                    <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>git 
+                                    <a href="contactList.php?del=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -108,7 +103,7 @@ if(isset($_GET['del'])){
                 <small class="text-danger" id="errA"></small>
             </div>
             <div class="col-6 mx-auto">
-                <input type="submit" value="Save" id="save " class="btn btn-info mt-3 col-12 ">
+                <input type="submit" value="Save" id="save " class="btn btn-dark mt-3 col-12 ">
             </div>
 
         </form>
