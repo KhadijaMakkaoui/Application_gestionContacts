@@ -1,5 +1,5 @@
 <?php
-class Contact extends database{
+class Contact extends Database{
     //Properiétées
     private $id;
     private $name;
