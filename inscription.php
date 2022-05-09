@@ -63,7 +63,7 @@ require "./classes/utilisateur.classes.php";
                
                 </div>
                 <div class="col-12">
-                     <input type="submit" value="Sign in " id="signin" class="btn btn-dark mt-3 col-12">
+                     <input type="submit" value="Sign up" id="signin" class="btn btn-dark mt-3 col-12">
                     <p class="mt-3 ">Already have an account?
                         <a href="connexion.php ">Sign in here</a> 
                     </p>
@@ -76,7 +76,6 @@ require "./classes/utilisateur.classes.php";
     </div>
 </div>
     <script src="script.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
