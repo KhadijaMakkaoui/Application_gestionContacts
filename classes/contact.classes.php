@@ -10,18 +10,9 @@ class Contact extends database{
     /**
      * 
      * constructeur
-     * @param string $name
-     * @param string $phone
-     * @param string $adresse
-     * @param int $userName
      * */
-    public function __construct($name,$email,$phone=null, $adresse=null, $userName){
+    public function __construct(){
         parent::__construct();
-        $this->name =$name;
-        $this->email =$email;
-        $this->phone =$phone;
-        $this->adresse =$adresse;
-        $this->userName =$userName;
     }
     //Methodes getters
     function getName(){
@@ -55,31 +46,6 @@ class Contact extends database{
    function setuserName($userName){
        $this->userName = $userName;
    }
-   function getContactInfo(){
-    $res=$this->selectAll("contacts","fk_username='$this->userName'");
-    return $res;
-   }
-   function getContactInfoId($id){
-    $res=$this->selectAll("contacts","fk_username='$this->userName' AND id=$id");
-    return $res;
-   }
-   function AddContact(){
-       if($this->name!="" && $this->email!=""){
-            $this->insert("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName]);
-            header("Location:contactList.php");
-       }
-        else
-         header("Location:contactList.php?error_msg=Name field and Email field are required");
-   }
-   function UpdateContact($id){
-    $this->update("contacts",['name'=>$this->name,'email'=>$this->email,'phone'=>$this->phone,'adresse'=>$this->adresse,'fk_username'=>$this->userName],"id=$id");
-    header("Location:contactList.php");
-
-}
-function DeleteContact($id){
-    $this->delete("contacts",$id);
-    header("Location:contactList.php");
-}
 
 }
 ?>
