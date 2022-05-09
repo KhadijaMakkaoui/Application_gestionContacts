@@ -6,14 +6,13 @@ require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
 ?>
 <?php
-
+$name=$adresse=$phone=$email="";
+$user=new user();
 //Afficher message d'erreur
 $visibility="d-none";
 if(isset($_GET['error_msg'])){
     $visibility="";
 }
-$name=$adresse=$phone=$email="";
-$user=new user();
 
 $arr_contact=$user->getContactList();
 
@@ -61,8 +60,12 @@ if(isset($_GET['del'])){
                                 <td><?php echo $row['phone']; ?></td>
                                 <td><?php echo $row['adresse']; ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>git 
-                                    <a href="contactList.php?del=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                    <a href="edit.php?id=<?php echo $row['id']; ?>"> 
+                                        <img src="images/icons8-edit-24.png">
+                                    </a>
+                                    <a href="contactList.php?del=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this contact?');">
+                                      <img src="images/icons8-delete-24.png">
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -108,24 +111,6 @@ if(isset($_GET['del'])){
 
         </form>
     </div>
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
     <script src="script.js"></script>
 </body>
 
