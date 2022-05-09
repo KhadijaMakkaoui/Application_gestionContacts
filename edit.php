@@ -1,5 +1,4 @@
 <?php
-// session_start();
 require "./classes/database.classes.php";
 require "./classes/contact.classes.php";
 require "./classes/utilisateur.classes.php";
@@ -11,20 +10,16 @@ if(isset($_GET['error_msg'])){
     $visibility="";
 }
 $name=$adresse=$phone=$email="";
-$contact=new Contact($name,$email,$phone,$adresse,$_SESSION['username']);
+$user=new user();
 
-$get_contact=$contact->getContactInfoId($_GET['id']);
-
+//Recuperer les infos du contact selectionné
+$get_contact=$user->getContactById($_GET['id']);
+//effectuer la modification
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $contact->setName($_POST['name']);
-    $contact->setEmail($_POST['email']);
-    $contact->setPhone($_POST['phone']);
-    $contact->setAdresse($_POST['adresse']);
-
-    $contact->UpdateContact($_GET['id']); 
-    
+    $user->UpdateContact($_GET['id'],$_POST['name'],$_POST['email'],$_POST['phone'],$_POST['adresse']);    
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +27,6 @@ $get_contact=$contact->getContactInfoId($_GET['id']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit contact</title>
-    <!-- <link rel="stylesheet" href="/bootsrap/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
@@ -66,12 +60,13 @@ $get_contact=$contact->getContactInfoId($_GET['id']);
                 <small class="text-danger" id="errA"></small>
             </div>
             <div class="col-6 mx-auto">
-                <input type="submit" value="Update" id="save " class="btn btn-dark mt-3 col-12 ">
+                <input type="submit" value="Update" id="save" class="btn text-light mt-3 col-12 " style="background-color:#90CAF9">
                 <button class="btn btn-secondary mt-3 col-12"><a href="contactList.php" class="text-light">Cancel</a></button>
             </div>
 
         </form>
     </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
