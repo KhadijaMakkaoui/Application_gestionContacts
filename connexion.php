@@ -32,7 +32,7 @@ if(isset($_GET['error_msg'])){
 <div class="container h-100">
     <div class="row d-flex justify-content-md-center align-items-center vh-100">
            <div class="col-12 col-lg-6">
-            <img src="login-pic.png" class="img-fluid" >
+            <img src="images/login-pic.png" class="img-fluid" >
 
             </div>
             <div class="col-12 col-lg-6">

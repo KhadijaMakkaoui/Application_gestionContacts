@@ -35,7 +35,7 @@ require "./classes/utilisateur.classes.php";
     <div class="container h-100">
     <div class="row d-flex justify-content-md-center align-items-center vh-100">
            <div class="col-12 col-lg-6">
-            <img src="Signup-pic.png" class="img-fluid" >
+            <img src="images/Signup-pic.png" class="img-fluid" >
 
             </div>
             <div class="col-12 col-lg-6">

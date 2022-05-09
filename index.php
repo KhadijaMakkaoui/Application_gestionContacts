@@ -19,7 +19,7 @@ session_destroy();
     <div class="row d-flex justify-content-md-center align-items-center vh-100">
 
     <div class="col-12 col-lg-6">
-        <img src="index_pic.png" class="img-fluid">
+        <img src="images/index_pic.png" class="img-fluid">
        </div>
        <div class=" col-12 col-lg-6">
             <h2>Hello,Welcome to Contact Application</h2>
