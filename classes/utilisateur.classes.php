@@ -22,7 +22,6 @@ class user extends Database{
             $this->signUpDate =$signUpDate;
             $this->lastLoginDate =date('Y-m-d');
         }
-        
     }
     //Methodes getters
     function getUsername(){
@@ -50,42 +49,67 @@ class user extends Database{
    function setLastLoginDate($lastLoginDate){
        $this->lastLoginDate =$lastLoginDate;
    }
-   //Verifier l'existance du username
-   function checkUserNamePass(){
-    $res=$this->selectAll("utilisateurs","username='$this->username' AND password= '$this->password'");
 
-    if($res){
-          return true;
-    }
-    else{
-        return false;
-    }
-   }
-   function checkUserName(){
-    $res=$this->selectAll("utilisateurs","username='$this->username'");
-    
-    if($res){
-          return true;
-    }
-    else{
-        return false;
-    }
-   }
-   function getUserInfo(){
-    $res=$this->selectAll("utilisateurs","username='$this->username'");
-    return $res;
-   }
-   function logIn(){
-        if($this->checkUserNamePass()){
-            $_SESSION['username']=$this->username;
-            $this->setLastLoginDate(date("Y-m-d H:i:s"));
-            $this->update("utilisateurs",['lastLogin'=>$this->lastLoginDate],"username='$this->username'");
-            header('Location: profile.php');
+    /**
+     * 
+     * Verifier l'existance du username et password
+     * @return bool
+     * */
+    function checkUserNamePass(){
+        $res=$this->selectAll("utilisateurs","username='$this->username' AND password= '$this->password'");
+
+        if($res){
+            return true;
         }
-        else
-            header('Location: connexion.php?error_msg=Your username or password is incorrect');
-   }
-   function singnUp(){
+        else{
+            return false;
+        }
+    }
+     /**
+     * 
+     * Verifier l'existance du username
+     * @return bool
+     * */
+    function checkUserName(){
+        $res=$this->selectAll("utilisateurs","username='$this->username'");
+        
+        if($res){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+     /**
+     * 
+     * Recuperer les information du user connecter
+     * @return array|false
+     * */
+    function getUserInfo(){
+        $res=$this->selectAll("utilisateurs","username='$this->username'");
+        return $res;
+    }
+     /**
+     * 
+     * Permet la connexion du user si les infos données sont correctes sinon affichage d'une erreur
+     * @return void
+     * */
+    function logIn(){
+            if($this->checkUserNamePass()){
+                $_SESSION['username']=$this->username;
+                $this->setLastLoginDate(date("Y-m-d H:i:s"));
+                $this->update("utilisateurs",['lastLogin'=>$this->lastLoginDate],"username='$this->username'");
+                header('Location: profile.php');
+            }
+            else
+                header('Location: connexion.php?error_msg=Your username or password is incorrect');
+    }
+     /**
+     * 
+     * Permet l'inscription du user : l'ajout des données dans la base de données
+     * @return void
+     * */
+    function singnUp(){
         if(empty($this->username) ||empty($this->password)){
             header('Location: inscription.php?error_msg=All fields are required');
         }
@@ -97,7 +121,7 @@ class user extends Database{
             header("Location:connexion.php");
         }
 
-   }
+    }
    /**
     * permer d'ajouter un contact
     * @param string $nameC
@@ -107,7 +131,7 @@ class user extends Database{
     */
     
     function AddContactByUser($nameC,$emailC,$phoneC=null, $adresseC=null){
-      
+
         if($nameC!="" && $emailC!=""){
             $this->insert("contacts",['name'=>$nameC,'email'=>$emailC,'phone'=>$phoneC,'adresse'=>$adresseC,'fk_username'=>$this->username]);
             header("Location:contactList.php");
