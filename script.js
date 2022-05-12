@@ -132,11 +132,11 @@ function validateEmail() {
 }
 
 function validateAdresse() {
-    let ad = adresse.value;
+    let ad = adresse.innerHTML;
     if (ad != "") {
         errA.innerHTML = "";
         // /i : ignoreCase	Checks whether the "i" modifier is set
-        if (!ad.match(/^[\w\.\,\+\:\;]{,255}$/i)) {
+        if (ad.match(/^[a-z0-9]{0,255}$/i)) {
             errA.innerHTML = "Too long adresse(must containe maximum length of 255 characters )";
         }
     }

@@ -1,3 +1,9 @@
+<?php 
+   
+    require "./classes/database.classes.php"; 
+    session_destroy();
+    include "includes/header.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +16,7 @@
 </head>
 
 <body>
-<?php 
-require "./classes/database.classes.php";
-session_destroy();
-    include "includes/header.php";
-    ?>
+
     <div class="container h-100">
     <div class="row d-flex justify-content-md-center align-items-center vh-100">
 
